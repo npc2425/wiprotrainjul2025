@@ -1,0 +1,20 @@
+{
+  "/api/user": {
+    "target": "http://localhost:8081",
+    "secure": false,
+    "pathRewrite": { "^/api/user": "/user" }
+  },
+  "/api/product": {
+    "target": "http://localhost:8082",
+    "secure": false,
+    "pathRewrite": { "^/api/product": "/product" }
+  },
+  "/api/order": {
+    "target": "http://localhost:8083",
+    "secure": false
+  },
+  "/api/cart": {
+    "target": "http://localhost:8083",
+    "secure": false
+  }
+}

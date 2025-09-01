@@ -1,0 +1,134 @@
+<div class="order-details-page">
+  <app-navbar></app-navbar>
+  
+  <main class="order-main">
+    <div class="container">
+      <div class="order-header">
+        <button class="back-btn" (click)="goBackToOrders()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back to Orders
+        </button>
+        
+        <div class="header-content" *ngIf="order">
+          <h1 class="page-title">Order #{{ order.id }}</h1>
+          <div class="order-meta">
+            <span class="order-date">{{ formatDate(order.createdAt) }} at {{ formatTime(order.createdAt) }}</span>
+            <span class="status-badge" [ngClass]="getStatusClass(order.status)">
+              {{ order.status }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-content" *ngIf="order && !loading">
+        <div class="order-items-section">
+          <div class="section-header">
+            <h2 class="section-title">Order Items</h2>
+            <span class="items-count">{{ order.items?.length || 0 }} items</span>
+          </div>
+          
+          <div class="order-items">
+            <div class="order-item" *ngFor="let item of order.items">
+              <div class="item-details">
+                <h3 class="item-name">{{ item.productName }}</h3>
+                <div class="item-meta">
+                  <span class="item-quantity">Qty: {{ item.quantity }}</span>
+                  <span class="item-price">₹{{ item.price.toFixed(2) }} each</span>
+                </div>
+              </div>
+              
+              <div class="item-total">
+                <span class="total-price">₹{{ getItemTotal(item).toFixed(2) }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-summary-section">
+          <div class="summary-card">
+            <h3 class="summary-title">Order Summary</h3>
+            
+            <div class="customer-info">
+              <h4 class="info-title">Customer Information</h4>
+              <div class="info-row">
+                <span>Name:</span>
+                <span>{{ order.customerName }}</span>
+              </div>
+              <div class="info-row">
+                <span>Email:</span>
+                <span>{{ order.customerEmail }}</span>
+              </div>
+            </div>
+            
+            <div class="pricing-breakdown">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span>₹{{ getSubtotal().toFixed(2) }}</span>
+              </div>
+              
+              <div class="summary-row">
+                <span>Shipping</span>
+                <span>{{ getShipping() === 0 ? 'Free' : '₹' + getShipping().toFixed(2) }}</span>
+              </div>
+              
+              <div class="summary-row">
+                <span>Tax (GST 18%)</span>
+                <span>₹{{ getTax().toFixed(2) }}</span>
+              </div>
+              
+              <div class="summary-divider"></div>
+              
+              <div class="summary-row total">
+                <span>Total Amount</span>
+                <span>₹{{ order.totalAmount.toFixed(2) }}</span>
+              </div>
+            </div>
+            
+            <div class="order-actions" *ngIf="order.status !== 'delivered' && order.status !== 'cancelled'">
+              <button class="cancel-order-btn" (click)="cancelOrder()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="15" y1="9" x2="9" y2="15"/>
+                  <line x1="9" y1="9" x2="15" y2="15"/>
+                </svg>
+                Cancel Order
+              </button>
+            </div>
+            
+            <div class="continue-actions">
+              <button class="continue-shopping-btn" (click)="continueShopping()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                Continue Shopping
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="loading-state" *ngIf="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading order details...</p>
+      </div>
+
+      <div class="error-state" *ngIf="error && !loading">
+        <div class="error-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <h3>Order not found</h3>
+        <p>The order you're looking for doesn't exist or you don't have permission to view it.</p>
+        <div class="error-actions">
+          <button class="retry-btn" (click)="loadOrderDetails()">Try Again</button>
+          <button class="back-btn-error" (click)="goBackToOrders()">Back to Orders</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

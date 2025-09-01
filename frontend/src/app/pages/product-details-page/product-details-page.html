@@ -1,0 +1,101 @@
+<div class="product-details-page">
+  <main class="product-main">
+    <div class="container">
+      <button class="back-btn" (click)="goBack()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Products
+      </button>
+
+      <div class="product-details" *ngIf="!loading && product">
+        <div class="product-images">
+          <div class="main-image">
+            <img [src]="product.imageURL" [alt]="product.prodName" />
+          </div>
+        </div>
+
+        <div class="product-info">
+          <div class="product-category">{{ product.prodCat }}</div>
+          <h1 class="product-title">{{ product.prodName }}</h1>
+          <p class="product-description">{{ product.prodDesc }}</p>
+          
+          <div class="product-rating" *ngIf="product.prodRating">
+            <div class="stars">
+              <span *ngFor="let star of getStars(product.prodRating)" class="star" [class.filled]="star">★</span>
+            </div>
+            <span class="rating-value">{{ product.prodRating }} out of 5</span>
+          </div>
+
+          <div class="price-section">
+            <span class="current-price">₹{{ product.price.toFixed(2) }}</span>
+          </div>
+
+          <div class="stock-section">
+            <div class="stock-indicator" [ngClass]="getStockClass()">
+              {{ getStockText() }}
+            </div>
+          </div>
+
+          <div class="quantity-section">
+            <label class="quantity-label">Quantity:</label>
+            <div class="quantity-controls">
+              <button 
+                class="qty-btn"
+                (click)="updateQuantity(quantity - 1)"
+                [disabled]="quantity <= 1"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14"/>
+                </svg>
+              </button>
+              <span class="quantity-display">{{ quantity }}</span>
+              <button 
+                class="qty-btn"
+                (click)="updateQuantity(quantity + 1)"
+                [disabled]="quantity >= product.availableQty"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 5v14M5 12h14"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button 
+              class="add-to-cart-btn"
+              (click)="addToCart()"
+              [disabled]="product.availableQty === 0"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="8" cy="21" r="1"/>
+                <circle cx="19" cy="21" r="1"/>
+                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+              </svg>
+              Add to Cart
+            </button>
+            
+            <button class="wishlist-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+              Add to Wishlist
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="loading-state" *ngIf="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading product details...</p>
+      </div>
+
+      <div class="error-state" *ngIf="!loading && !product">
+        <h2>Product Not Found</h2>
+        <p>The product you're looking for doesn't exist.</p>
+        <button class="back-btn" (click)="goBack()">Go Back</button>
+      </div>
+    </div>
+  </main>
+</div>
