@@ -1,0 +1,18 @@
+<section class="product-grid-section">
+  <div class="container">
+    <div class="section-header" *ngIf="title">
+      <h2 class="section-title">{{ title }}</h2>
+      <div class="title-underline"></div>
+    </div>
+    
+    <div class="product-grid" [ngClass]="'grid-cols-' + columns">
+      <app-customer-product-card
+        *ngFor="let product of products; trackBy: trackByProductId"
+        [product]="product"
+        (addToCart)="onAddToCart($event)"
+        (quickView)="onQuickView($event)"
+        (toggleWishlist)="onToggleWishlist($event)"
+      ></app-customer-product-card>
+    </div>
+  </div>
+</section>

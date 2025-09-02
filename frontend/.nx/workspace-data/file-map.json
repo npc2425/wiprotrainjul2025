@@ -1,0 +1,479 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.4.1",
+  "pathMappings": {
+    "@spartan-ng/helm/avatar": [
+      "./libs/ui/ui-avatar-helm/src/index.ts"
+    ],
+    "@spartan-ng/helm/input": [
+      "./libs/ui/ui-input-helm/src/index.ts"
+    ],
+    "@spartan-ng/helm/button": [
+      "./libs/ui/ui-button-helm/src/index.ts"
+    ],
+    "@spartan-ng/helm/badge": [
+      "./libs/ui/ui-badge-helm/src/index.ts"
+    ],
+    "@spartan-ng/helm/sonner": [
+      "./libs/ui/ui-sonner-helm/src/index.ts"
+    ],
+    "@spartan-ng/helm/spinner": [
+      "./libs/ui/ui-spinner-helm/src/index.ts"
+    ],
+    "@spartan-ng/helm/table": [
+      "./libs/ui/ui-table-helm/src/index.ts"
+    ],
+    "@spartan-ng/helm/skeleton": [
+      "./libs/ui/ui-skeleton-helm/src/index.ts"
+    ],
+    "@spartan-ng/helm/icon": [
+      "./libs/ui/ui-icon-helm/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "frontend": [
+        {
+          "file": ".editorconfig",
+          "hash": "8037249353422744134"
+        },
+        {
+          "file": ".gitignore",
+          "hash": "10175894702052279752"
+        },
+        {
+          "file": "README.md",
+          "hash": "1169797852794117000"
+        },
+        {
+          "file": "angular.json",
+          "hash": "8266927442415716327"
+        },
+        {
+          "file": "components.json",
+          "hash": "6059084043708386398"
+        },
+        {
+          "file": "libs/ui/ui-avatar-helm/src/index.ts",
+          "hash": "1227119844582100999"
+        },
+        {
+          "file": "libs/ui/ui-avatar-helm/src/lib/fallback/hlm-avatar-fallback.ts",
+          "hash": "14204851877570307064"
+        },
+        {
+          "file": "libs/ui/ui-avatar-helm/src/lib/fallback/index.ts",
+          "hash": "8650341075193345906"
+        },
+        {
+          "file": "libs/ui/ui-avatar-helm/src/lib/hlm-avatar.ts",
+          "hash": "6294746233894637376"
+        },
+        {
+          "file": "libs/ui/ui-avatar-helm/src/lib/image/hlm-avatar-image.ts",
+          "hash": "392549181607237566"
+        },
+        {
+          "file": "libs/ui/ui-avatar-helm/src/lib/image/index.ts",
+          "hash": "10061990062961366991"
+        },
+        {
+          "file": "libs/ui/ui-badge-helm/src/index.ts",
+          "hash": "9272522761525995887"
+        },
+        {
+          "file": "libs/ui/ui-badge-helm/src/lib/hlm-badge.ts",
+          "hash": "3589773062185912603"
+        },
+        {
+          "file": "libs/ui/ui-button-helm/src/index.ts",
+          "hash": "6081692160123000047"
+        },
+        {
+          "file": "libs/ui/ui-button-helm/src/lib/hlm-button.token.ts",
+          "hash": "13515884188584217050"
+        },
+        {
+          "file": "libs/ui/ui-button-helm/src/lib/hlm-button.ts",
+          "hash": "5064849330768557436"
+        },
+        {
+          "file": "libs/ui/ui-icon-helm/src/index.ts",
+          "hash": "529064637437747754"
+        },
+        {
+          "file": "libs/ui/ui-icon-helm/src/lib/hlm-icon.token.ts",
+          "hash": "7365102722062103929"
+        },
+        {
+          "file": "libs/ui/ui-icon-helm/src/lib/hlm-icon.ts",
+          "hash": "11496068464699763599"
+        },
+        {
+          "file": "libs/ui/ui-input-helm/src/index.ts",
+          "hash": "11441528579582638105"
+        },
+        {
+          "file": "libs/ui/ui-input-helm/src/lib/hlm-input-error.ts",
+          "hash": "14088334091357650485"
+        },
+        {
+          "file": "libs/ui/ui-input-helm/src/lib/hlm-input.ts",
+          "hash": "10275068490174047328"
+        },
+        {
+          "file": "libs/ui/ui-skeleton-helm/src/index.ts",
+          "hash": "4875365493008386408"
+        },
+        {
+          "file": "libs/ui/ui-skeleton-helm/src/lib/hlm-skeleton.ts",
+          "hash": "9262871594419866992"
+        },
+        {
+          "file": "libs/ui/ui-sonner-helm/src/index.ts",
+          "hash": "18229189576143624330"
+        },
+        {
+          "file": "libs/ui/ui-sonner-helm/src/lib/hlm-toaster.ts",
+          "hash": "14814487906014055654"
+        },
+        {
+          "file": "libs/ui/ui-spinner-helm/src/index.ts",
+          "hash": "8156350568468315237"
+        },
+        {
+          "file": "libs/ui/ui-spinner-helm/src/lib/hlm-spinner.ts",
+          "hash": "58165160701120591"
+        },
+        {
+          "file": "libs/ui/ui-table-helm/src/index.ts",
+          "hash": "11751116311631831108"
+        },
+        {
+          "file": "libs/ui/ui-table-helm/src/lib/hlm-table.ts",
+          "hash": "5140818191173186287"
+        },
+        {
+          "file": "package-lock.json",
+          "hash": "4278431037494283701"
+        },
+        {
+          "file": "package.json",
+          "hash": "15749362017766675800",
+          "deps": [
+            "npm:@angular/build",
+            "npm:@angular/cli",
+            "npm:@angular/compiler-cli",
+            "npm:@spartan-ng/cli",
+            "npm:@types/jasmine",
+            "npm:jasmine-core",
+            "npm:karma",
+            "npm:karma-chrome-launcher",
+            "npm:karma-coverage",
+            "npm:karma-jasmine",
+            "npm:karma-jasmine-html-reporter",
+            "npm:tailwind-merge",
+            "npm:tailwindcss",
+            "npm:tailwindcss-animate",
+            "npm:typescript",
+            "npm:@angular/cdk",
+            "npm:@angular/common",
+            "npm:@angular/compiler",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/platform-browser",
+            "npm:@angular/router",
+            "npm:@ng-icons/core",
+            "npm:@ng-icons/lucide",
+            "npm:@spartan-ng/brain",
+            "npm:bootstrap",
+            "npm:class-variance-authority",
+            "npm:clsx",
+            "npm:ngx-sonner",
+            "npm:rxjs",
+            "npm:tslib",
+            "npm:zone.js"
+          ]
+        },
+        {
+          "file": "proxy.conf.json",
+          "hash": "10584161724338779159"
+        },
+        {
+          "file": "public/favicon.ico",
+          "hash": "3988961587069885523"
+        },
+        {
+          "file": "src/app/app-animations.css",
+          "hash": "11779012621682734373"
+        },
+        {
+          "file": "src/app/app.config.ts",
+          "hash": "10664804338349963570"
+        },
+        {
+          "file": "src/app/app.css",
+          "hash": "2214987634519692988"
+        },
+        {
+          "file": "src/app/app.html",
+          "hash": "15232643886528333187"
+        },
+        {
+          "file": "src/app/app.routes.ts",
+          "hash": "11383996739715758971"
+        },
+        {
+          "file": "src/app/app.spec.ts",
+          "hash": "1684488913847834997"
+        },
+        {
+          "file": "src/app/app.ts",
+          "hash": "9305104919036469805"
+        },
+        {
+          "file": "src/app/components/footer/footer.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/footer/footer.html",
+          "hash": "12965503917554229835"
+        },
+        {
+          "file": "src/app/components/footer/footer.ts",
+          "hash": "10129335788600824411"
+        },
+        {
+          "file": "src/app/components/header/header.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/header/header.html",
+          "hash": "13270834388122929549"
+        },
+        {
+          "file": "src/app/components/header/header.ts",
+          "hash": "18408372809398024494"
+        },
+        {
+          "file": "src/app/components/navbar/navbar.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/navbar/navbar.html",
+          "hash": "11219713482214357601"
+        },
+        {
+          "file": "src/app/components/navbar/navbar.spec.ts",
+          "hash": "12925218578011934146"
+        },
+        {
+          "file": "src/app/components/navbar/navbar.ts",
+          "hash": "11299939869099706757"
+        },
+        {
+          "file": "src/app/components/product-card/product-card.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/components/product-card/product-card.html",
+          "hash": "16239247922945665016"
+        },
+        {
+          "file": "src/app/components/product-card/product-card.spec.ts",
+          "hash": "10634264372927835993"
+        },
+        {
+          "file": "src/app/components/product-card/product-card.ts",
+          "hash": "13737602711883377861"
+        },
+        {
+          "file": "src/app/dashboard/dashboard.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/dashboard/dashboard.html",
+          "hash": "6289448167366289805"
+        },
+        {
+          "file": "src/app/dashboard/dashboard.spec.ts",
+          "hash": "9064787999906468442"
+        },
+        {
+          "file": "src/app/dashboard/dashboard.ts",
+          "hash": "4786616156312169368"
+        },
+        {
+          "file": "src/app/guards/admin-guard.ts",
+          "hash": "5254277431802002529"
+        },
+        {
+          "file": "src/app/home/home.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/home/home.html",
+          "hash": "16619066491338721079"
+        },
+        {
+          "file": "src/app/home/home.spec.ts",
+          "hash": "741458100052814319"
+        },
+        {
+          "file": "src/app/home/home.ts",
+          "hash": "1289482896069099399"
+        },
+        {
+          "file": "src/app/interceptors/auth-interceptor.ts",
+          "hash": "285979851760577190"
+        },
+        {
+          "file": "src/app/models/cart.ts",
+          "hash": "15967412713612210545"
+        },
+        {
+          "file": "src/app/models/order-item.ts",
+          "hash": "5886199893674383300"
+        },
+        {
+          "file": "src/app/models/order.ts",
+          "hash": "14967465050010788762"
+        },
+        {
+          "file": "src/app/models/product.ts",
+          "hash": "1944486919291597068"
+        },
+        {
+          "file": "src/app/models/user.ts",
+          "hash": "79851077380527624"
+        },
+        {
+          "file": "src/app/pages/cart-page/cart-page.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/pages/cart-page/cart-page.html",
+          "hash": "1914128145061732358"
+        },
+        {
+          "file": "src/app/pages/cart-page/cart-page.ts",
+          "hash": "5880040385788175390"
+        },
+        {
+          "file": "src/app/pages/dashboard-page/dashboard-page.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/pages/dashboard-page/dashboard-page.html",
+          "hash": "7507213697752142111"
+        },
+        {
+          "file": "src/app/pages/dashboard-page/dashboard-page.ts",
+          "hash": "9391822797453076638"
+        },
+        {
+          "file": "src/app/pages/home-page/home-page.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/pages/home-page/home-page.html",
+          "hash": "3954564536341600747"
+        },
+        {
+          "file": "src/app/pages/home-page/home-page.ts",
+          "hash": "11618694404077510398"
+        },
+        {
+          "file": "src/app/pages/login-page/login-page.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/pages/login-page/login-page.html",
+          "hash": "11430135481484576519"
+        },
+        {
+          "file": "src/app/pages/login-page/login-page.ts",
+          "hash": "12827414398427428632"
+        },
+        {
+          "file": "src/app/pages/product-details-page/product-details-page.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/pages/product-details-page/product-details-page.html",
+          "hash": "14643873888713609583"
+        },
+        {
+          "file": "src/app/pages/product-details-page/product-details-page.ts",
+          "hash": "11662582271549610343"
+        },
+        {
+          "file": "src/app/pages/register-page/register-page.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/pages/register-page/register-page.html",
+          "hash": "2866596031783792046"
+        },
+        {
+          "file": "src/app/pages/register-page/register-page.ts",
+          "hash": "11322722876039073788"
+        },
+        {
+          "file": "src/app/product-details/product-details.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/product-details/product-details.html",
+          "hash": "17512862215208727363"
+        },
+        {
+          "file": "src/app/product-details/product-details.spec.ts",
+          "hash": "13351852305219396086"
+        },
+        {
+          "file": "src/app/product-details/product-details.ts",
+          "hash": "7743926891874906863"
+        },
+        {
+          "file": "src/app/services/auth.ts",
+          "hash": "7817060865341363586"
+        },
+        {
+          "file": "src/app/services/cart.ts",
+          "hash": "1196934467054824896"
+        },
+        {
+          "file": "src/app/services/product.ts",
+          "hash": "9471527608187766345"
+        },
+        {
+          "file": "src/index.html",
+          "hash": "10978432236329079223"
+        },
+        {
+          "file": "src/main.ts",
+          "hash": "7295771969642622669"
+        },
+        {
+          "file": "src/styles.css",
+          "hash": "2917954890128038984"
+        },
+        {
+          "file": "tsconfig.app.json",
+          "hash": "10136459155298117738"
+        },
+        {
+          "file": "tsconfig.json",
+          "hash": "4932980856339379820"
+        },
+        {
+          "file": "tsconfig.spec.json",
+          "hash": "15504553596141903120"
+        }
+      ]
+    },
+    "nonProjectFiles": []
+  }
+}

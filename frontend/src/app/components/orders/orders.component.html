@@ -1,0 +1,98 @@
+<div class="orders-page">
+  <main class="orders-main">
+    <div class="container">
+      <div class="orders-header">
+        <h1 class="page-title">My Orders</h1>
+        <p class="page-subtitle">Track and manage your order history</p>
+      </div>
+
+      <div class="orders-content" *ngIf="!loading">
+        <div class="orders-list" *ngIf="orders.length > 0; else emptyOrders">
+          <div class="order-card" *ngFor="let order of orders" (click)="viewOrderDetails(order.id)">
+            <div class="order-header">
+              <div class="order-info">
+                <h3 class="order-id">Order #{{ order.id }}</h3>
+                <div class="order-meta">
+                  <span class="order-date">{{ formatDate(order.createdAt) }}</span>
+                  <span class="order-time">{{ formatTime(order.createdAt) }}</span>
+                </div>
+              </div>
+              <div class="order-status">
+                <span class="status-badge" [ngClass]="getStatusClass(order.status)">
+                  {{ order.status }}
+                </span>
+              </div>
+            </div>
+            
+            <div class="order-details">
+              <div class="order-items-preview">
+                <span class="items-count">{{ order.items?.length || 0 }} items</span>
+              </div>
+              
+              <div class="order-total">
+                <span class="total-amount">₹{{ order.totalAmount.toFixed(2) }}</span>
+              </div>
+            </div>
+            
+            <div class="order-actions">
+              <button class="view-details-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                View Details
+              </button>
+              
+              <button class="track-order-btn" *ngIf="order.status !== 'delivered' && order.status !== 'cancelled'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 18V6a2 2 0 0 0-2-2c-1.1 0-2 .9-2 2v12"/>
+                  <path d="M15 18h-6"/>
+                  <path d="M19 18v-3c0-1.1-.9-2-2-2s-2 .9-2 2v3"/>
+                </svg>
+                Track Order
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <ng-template #emptyOrders>
+          <div class="empty-orders">
+            <div class="empty-orders-icon">
+              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h2 class="empty-title">No orders yet</h2>
+            <p class="empty-description">You haven't placed any orders. Start shopping to see your orders here!</p>
+            <button class="shop-now-btn" (click)="continueShopping()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+              Start Shopping
+            </button>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="loading-state" *ngIf="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading your orders...</p>
+      </div>
+
+      <div class="error-state" *ngIf="error && !loading">
+        <div class="error-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <h3>Unable to load orders</h3>
+        <p>There was an issue loading your orders. Please try again.</p>
+        <button class="retry-btn" (click)="loadOrders()">Retry</button>
+      </div>
+    </div>
+  </main>
+</div>

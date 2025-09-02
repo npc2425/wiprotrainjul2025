@@ -1,0 +1,55 @@
+<div class="product-card" *ngIf="product">
+  <div class="product-image-container">
+    <img [src]="product.imageURL" [alt]="product.prodName" class="product-image" />
+    
+    <div class="product-overlay">
+      <button class="overlay-btn wishlist" (click)="onWishlistToggle($event)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </button>
+      <button class="overlay-btn quick-view" (click)="onQuickView($event)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="stock-indicator" [ngClass]="getStockClass()">
+      {{ getStockText() }}
+    </div>
+  </div>
+
+  <div class="product-content">
+    <div class="product-category">{{ product.prodCat }}</div>
+    <h3 class="product-name" (click)="onProductClick()">{{ product.prodName }}</h3>
+    <p class="product-description">{{ product.prodDesc }}</p>
+    
+    <div class="product-rating" *ngIf="product.prodRating">
+      <div class="stars">
+        <span *ngFor="let star of getStars(product.prodRating)" class="star" [class.filled]="star">★</span>
+      </div>
+      <span class="rating-value">{{ product.prodRating }}</span>
+    </div>
+
+    <div class="product-footer">
+      <div class="price-section">
+        <span class="current-price">₹{{ getCurrentPrice() }}</span>
+      </div>
+      
+      <button 
+        class="add-to-cart-btn"
+        (click)="onAddToCart($event)"
+        [disabled]="product.availableQty === 0"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="8" cy="21" r="1"/>
+          <circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>

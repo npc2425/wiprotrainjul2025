@@ -1,0 +1,259 @@
+<div class="admin-dashboard">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <button 
+        class="nav-item" 
+        [class.active]="activeTab() === 'overview'"
+        (click)="setActiveTab('overview')"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <line x1="9" y1="9" x2="15" y2="9"/>
+          <line x1="9" y1="15" x2="15" y2="15"/>
+        </svg>
+        Overview
+      </button>
+      
+      <button 
+        class="nav-item" 
+        [class.active]="activeTab() === 'products'"
+        (click)="setActiveTab('products')"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        </svg>
+        Products
+        <span class="count-badge">{{ totalProducts() }}</span>
+      </button>
+      
+      <button 
+        class="nav-item" 
+        [class.active]="activeTab() === 'orders'"
+        (click)="setActiveTab('orders')"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14,2 14,8 20,8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10,9 9,9 8,9"/>
+        </svg>
+        Orders
+        <span class="count-badge">{{ totalOrders() }}</span>
+      </button>
+      
+      <button 
+        class="nav-item" 
+        [class.active]="activeTab() === 'users'"
+        (click)="setActiveTab('users')"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        Users
+        <span class="count-badge">{{ totalCustomers() }}</span>
+      </button>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Overview Tab -->
+    <div *ngIf="activeTab() === 'overview'" class="tab-content">
+      <div class="page-header">
+        <h1 class="page-title">Dashboard Overview</h1>
+        <p class="page-subtitle">Welcome back! Here's what's happening with your store.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card revenue">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ formatCurrency(totalRevenue()) }}</div>
+            <div class="stat-label">Total Revenue</div>
+          </div>
+        </div>
+
+        <div class="stat-card orders">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14,2 14,8 20,8"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ totalOrders() }}</div>
+            <div class="stat-label">Total Orders</div>
+          </div>
+        </div>
+
+        <div class="stat-card products">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ totalProducts() }}</div>
+            <div class="stat-label">Total Products</div>
+          </div>
+        </div>
+
+        <div class="stat-card customers">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ totalCustomers() }}</div>
+            <div class="stat-label">Total Customers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Tab -->
+    <div *ngIf="activeTab() === 'products'" class="tab-content">
+      <div class="page-header">
+        <h1 class="page-title">Product Management</h1>
+        <button class="primary-btn" (click)="openProductDialog()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Add Product
+        </button>
+      </div>
+
+      <div class="products-grid" *ngIf="!loading()">
+        <app-admin-product-card
+          *ngFor="let product of products()"
+          [product]="product"
+          (edit)="onEditProduct($event)"
+          (delete)="onDeleteProduct($event)"
+        ></app-admin-product-card>
+      </div>
+
+      <div class="loading-state" *ngIf="loading()">
+        <div class="loading-spinner"></div>
+        <p>Loading products...</p>
+      </div>
+    </div>
+
+    <!-- Orders Tab -->
+    <div *ngIf="activeTab() === 'orders'" class="tab-content">
+      <div class="page-header">
+        <h1 class="page-title">Order Management</h1>
+        
+      </div>
+
+      <div class="orders-table" *ngIf="!loading()">
+        <div class="table-header">
+          <div class="table-row">
+            <div class="table-cell">Order ID</div>
+            <div class="table-cell">Customer</div>
+            <div class="table-cell">Date</div>
+            <div class="table-cell">Amount</div>
+      
+          </div>
+        </div>
+        <div class="table-body">
+          <div class="table-row" *ngFor="let order of orders()">
+            <div class="table-cell">
+              <span class="order-id">#{{ order.id }}</span>
+            </div>
+            <div class="table-cell">
+              <div class="customer-info">
+                <div class="customer-name">{{ order.customerName }}</div>
+                <div class="customer-email">{{ order.customerEmail }}</div>
+              </div>
+            </div>
+            <div class="table-cell">{{ formatDate(order.createdAt) }}</div>
+            <div class="table-cell">
+              <span class="amount">{{ formatCurrency(order.totalAmount) }}</span>
+            </div>
+       
+          
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Users Tab -->
+    <div *ngIf="activeTab() === 'users'" class="tab-content">
+      <div class="page-header">
+        <h1 class="page-title">User Management</h1>
+        
+      </div>
+
+      <div class="users-grid" *ngIf="!loading()">
+        <div class="user-card" *ngFor="let user of users()">
+          <div class="user-header">
+            <div class="user-avatar">
+              <span>{{ user.firstName?.[0] }}{{ user.lastName?.[0] }}</span>
+            </div>
+            <div class="user-info">
+              <h3 class="user-name">{{ user.firstName }} {{ user.lastName }}</h3>
+              <p class="user-email">{{ user.email }}</p>
+              <span class="user-type" [ngClass]="user.userType === 0 ? 'admin' : 'customer'">
+                {{ getUserTypeText(user.userType) }}
+              </span>
+            </div>
+          </div>
+          <div class="user-stats">
+            <div class="stat">
+              <span class="stat-label">Joined</span>
+              <span class="stat-value">{{ formatDate(user.createdAt) }}</span>
+            </div>
+            <div class="stat" *ngIf="user.userType === 1">
+              <span class="stat-label">Orders</span>
+              <span class="stat-value">{{ user.orderCount || 0 }}</span>
+            </div>
+          </div>
+          <div class="user-actions">
+            <button class="action-btn view" (click)="onViewUser(user)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+            <button class="action-btn delete" (click)="onDeleteUser(user)" *ngIf="user.userType !== 0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="3,6 5,6 21,6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-state" *ngIf="loading()">
+      <div class="loading-spinner"></div>
+      <p>Loading dashboard data...</p>
+    </div>
+  </main>
+
+  <!-- Product Dialog -->
+  <app-product-dialog
+    [isVisible]="showProductDialog"
+    [product]="selectedProduct"
+    (close)="onCloseProductDialog()"
+    (productSaved)="onProductSaved($event)"
+  ></app-product-dialog>
+</div>
